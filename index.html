@@ -2,7 +2,17 @@
 
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta name="theme-color" content="#131313"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Master Control"/>
+<title>Master Control — Player</title>
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="icons/icon-192.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"/>
+<link rel="stylesheet" href="css/mobile.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;family=Hanken+Grotesk:wght@500;800&amp;family=Space+Mono:wght@700&amp;family=Epilogue:wght@500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -134,27 +144,22 @@
       transform: translate(-50%, -50%) rotate(45deg);
     }
   </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
   </head>
-<body class="bg-background text-on-surface font-body-standard min-h-screen flex flex-col items-center justify-center overflow-x-hidden">
+<body class="bg-background text-on-surface font-body-standard min-h-screen flex flex-col items-center overflow-x-hidden">
 <!-- TOP APP BAR -->
-<header class="bg-surface-container-lowest shadow-md flex justify-between items-center px-bezel-margin py-2 w-full max-w-7xl mx-auto fixed top-0 border-b-2 border-outline-variant z-[60]">
+<header class="app-header bg-surface-container-lowest shadow-md flex justify-between items-center px-bezel-margin py-2 w-full border-b-2 border-outline-variant">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary" data-icon="settings_input_component">settings_input_component</span>
 <h1 class="font-label-industrial text-label-industrial uppercase tracking-widest text-primary">MASTER CONTROL</h1>
 </div>
-<div class="font-display-time text-display-time text-primary-fixed-dim drop-shadow-[0_0_8px_rgba(255,181,153,0.6)]">
+<div class="font-display-time text-display-time text-primary-fixed-dim drop-shadow-[0_0_8px_rgba(255,181,153,0.6)]" data-app-clock>
       10:24
     </div>
 <button class="hover:text-primary transition-colors active:scale-95 duration-100">
 <span class="material-symbols-outlined" data-icon="power_settings_new">power_settings_new</span>
 </button>
 </header>
-<main class="w-full max-w-md mx-auto pt-16 pb-24 px-4 space-y-panel-gap">
+<main class="w-full max-w-md mx-auto px-4 space-y-panel-gap flex-1">
 <!-- TAPE WELL MODULE -->
 <section class="bg-surface-container p-4 rounded-lg mechanical-inset relative border-4 border-surface-container-high brushed-metal">
 <!-- Decorative Screws -->
@@ -295,21 +300,9 @@
 </div>
 </section>
 </main>
-<!-- BOTTOM NAV BAR -->
-<nav class="bg-surface-container-low fixed bottom-0 left-0 w-full z-50 border-t-4 border-surface-container-highest shadow-[0_-4px_10px_rgba(0,0,0,0.8)] h-20 flex justify-around items-stretch">
-<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 py-button-spacing hover:bg-surface-container hover:text-on-surface transition-all active:translate-y-1 duration-75" href="shelf.html">
-<span class="material-symbols-outlined mb-1" data-icon="cassette">mobile_share_stack</span>
-<span class="font-label-industrial text-label-industrial">LIBRARY</span>
-</a>
-<a class="flex flex-col items-center justify-center bg-surface-container-highest text-primary-fixed-dim shadow-[inset_0_4px_8px_rgba(0,0,0,0.9)] border-t-2 border-primary-container py-button-spacing active:translate-y-1 duration-75" href="discover.html">
-<span class="material-symbols-outlined mb-1" data-icon="equalizer">equalizer</span>
-<span class="font-label-industrial text-label-industrial">EQUALIZER</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 py-button-spacing hover:bg-surface-container hover:text-on-surface transition-all active:translate-y-1 duration-75" href="settings.html">
-<span class="material-symbols-outlined mb-1" data-icon="album">album</span>
-<span class="font-label-industrial text-label-industrial">COLLECTION</span>
-</a>
-</nav>
+<div id="app-bottom-nav"></div>
+<script src="js/nav.js"></script>
+<script src="js/app.js"></script>
 <script>
     // Simple VU Needle Simulation
     const needles = document.querySelectorAll('.vu-needle');

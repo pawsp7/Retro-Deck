@@ -2,8 +2,17 @@
 
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta name="theme-color" content="#131313"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Master Control"/>
 <title>Master Control - Tape Library</title>
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="icons/icon-192.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"/>
+<link rel="stylesheet" href="css/mobile.css"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;family=Hanken+Grotesk:wght@500;800&amp;family=Space+Mono:wght@700&amp;family=Epilogue:wght@500&amp;display=swap" rel="stylesheet"/>
@@ -145,15 +154,10 @@
         ::-webkit-scrollbar-track { background: #0e0e0e; }
         ::-webkit-scrollbar-thumb { background: #353535; border-radius: 3px; }
     </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
   </head>
 <body class="bg-background text-on-surface font-body-standard min-h-screen flex flex-col items-center overflow-hidden">
 <!-- Top App Bar -->
-<header class="bg-surface-container-lowest shadow-md docked full-width top-0 border-b-2 border-outline-variant flex justify-between items-center px-bezel-margin py-2 w-full max-w-7xl mx-auto z-50">
+<header class="app-header bg-surface-container-lowest shadow-md border-b-2 border-outline-variant flex justify-between items-center px-bezel-margin py-2 w-full">
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">settings_input_component</span>
 <h1 class="font-label-industrial text-label-industrial uppercase tracking-widest text-primary">MASTER CONTROL</h1>
@@ -166,7 +170,7 @@
 </button>
 </header>
 <!-- Main Content Canvas -->
-<main class="flex-1 w-full max-w-2xl mx-auto flex flex-col relative px-4 pt-4 pb-24 overflow-hidden">
+<main class="flex-1 w-full max-w-2xl mx-auto flex flex-col relative px-4 pt-4 overflow-hidden app-main-scroll">
 <!-- Search Module (Dymo Labeler Style) -->
 <div class="mb-6 p-panel-gap bg-surface-container-high rounded shadow-lg border border-outline-variant relative">
 <div class="screw-head absolute top-1 left-1"></div>
@@ -280,24 +284,9 @@
 </button>
 </div>
 </main>
-<!-- Bottom Navigation Bar -->
-<nav class="fixed bottom-0 left-0 w-full z-50 border-t-4 border-surface-container-highest bg-surface-container-low flex justify-around items-stretch w-full h-20 shadow-[0_-4px_10px_rgba(0,0,0,0.8)]">
-<!-- Library (Active) -->
-<a class="flex flex-col items-center justify-center bg-surface-container-highest text-primary-fixed-dim shadow-[inset_0_4px_8px_rgba(0,0,0,0.9)] border-t-2 border-primary-container py-button-spacing flex-1 hover:bg-surface-container hover:text-on-surface transition-all active:translate-y-1 active:shadow-inner duration-75" href="shelf.html">
-<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">mobile_share_stack</span>
-<span class="font-label-industrial text-label-industrial">LIBRARY</span>
-</a>
-<!-- Equalizer -->
-<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 py-button-spacing flex-1 hover:bg-surface-container hover:text-on-surface transition-all active:translate-y-1 active:shadow-inner duration-75" href="discover.html">
-<span class="material-symbols-outlined mb-1">equalizer</span>
-<span class="font-label-industrial text-label-industrial">EQUALIZER</span>
-</a>
-<!-- Collection -->
-<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 py-button-spacing flex-1 hover:bg-surface-container hover:text-on-surface transition-all active:translate-y-1 active:shadow-inner duration-75" href="settings.html">
-<span class="material-symbols-outlined mb-1">album</span>
-<span class="font-label-industrial text-label-industrial">COLLECTION</span>
-</a>
-</nav>
+<div id="app-bottom-nav"></div>
+<script src="js/nav.js"></script>
+<script src="js/app.js"></script>
 <script>
         // Micro-interaction for tape selection
         document.querySelectorAll('.tape-spine').forEach(tape => {
