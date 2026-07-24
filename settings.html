@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Hanken+Grotesk:wght@300..800&amp;family=Space+Mono:wght@400;700&amp;family=Epilogue:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .recessed-panel {
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.8), inset 0 -1px 2px rgba(255,255,255,0.05);
+        }
+
+        .protruding-button {
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -1px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.2);
+        }
+
+        .protruding-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.8), inset 0 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .rca-socket {
+            background: radial-gradient(circle, #1a1a1a 30%, #444 40%, #888 45%, #222 55%);
+            border: 2px solid #5b4137;
+        }
+
+        .metallic-grain {
+            background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+        }
+
+        .screw-head {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #444;
+            position: relative;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.8), 0 1px 1px rgba(255,255,255,0.1);
+        }
+        .screw-head::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            width: 80%;
+            height: 1px;
+            background: #222;
+        }
+
+        .toggle-switch-track {
+            background: #0e0e0e;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .amber-glow {
+            text-shadow: 0 0 8px rgba(255, 181, 153, 0.4);
+        }
+
+        .chassis-border {
+            border: 2px solid #2a2a2a;
+            border-right-color: #0e0e0e;
+            border-bottom-color: #0e0e0e;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#003907",
+                      "surface-container-high": "#2a2a2a",
+                      "on-error-container": "#ffdad6",
+                      "surface-container": "#20201f",
+                      "secondary-fixed-dim": "#00e639",
+                      "tertiary-fixed-dim": "#ffb4aa",
+                      "primary-fixed-dim": "#ffb599",
+                      "primary-fixed": "#ffdbce",
+                      "on-tertiary-container": "#610004",
+                      "on-surface": "#e5e2e1",
+                      "on-secondary-container": "#007117",
+                      "surface-container-low": "#1c1b1b",
+                      "inverse-surface": "#e5e2e1",
+                      "error": "#ffb4ab",
+                      "secondary-fixed": "#72ff70",
+                      "tertiary": "#ffb4aa",
+                      "surface-container-lowest": "#0e0e0e",
+                      "background": "#131313",
+                      "on-surface-variant": "#e4bfb1",
+                      "surface-container-highest": "#353535",
+                      "secondary": "#ecffe3",
+                      "on-primary-fixed": "#370e00",
+                      "inverse-primary": "#a63b00",
+                      "outline": "#ab8a7d",
+                      "primary-container": "#ff5f00",
+                      "on-secondary-fixed-variant": "#00530e",
+                      "on-primary-container": "#531a00",
+                      "on-error": "#690005",
+                      "inverse-on-surface": "#313030",
+                      "on-secondary-fixed": "#002203",
+                      "surface-variant": "#353535",
+                      "tertiary-fixed": "#ffdad5",
+                      "primary": "#ffb599",
+                      "outline-variant": "#5b4137",
+                      "surface": "#131313",
+                      "on-tertiary-fixed": "#410002",
+                      "on-background": "#e5e2e1",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#7f2b00",
+                      "on-primary": "#5a1c00",
+                      "surface-dim": "#131313",
+                      "tertiary-container": "#ff5c4f",
+                      "surface-tint": "#ffb599",
+                      "on-tertiary-fixed-variant": "#930009",
+                      "secondary-container": "#13ff43",
+                      "on-tertiary": "#690004",
+                      "surface-bright": "#393939"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "panel-gap": "4px",
+                      "button-spacing": "8px",
+                      "bezel-margin": "16px",
+                      "recess-depth": "2px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Space Grotesk"],
+                      "label-industrial": ["Hanken Grotesk"],
+                      "display-time": ["Space Mono"],
+                      "tape-script": ["Epilogue"],
+                      "body-standard": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-lg": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                      "label-industrial": ["12px", {"lineHeight": "16px", "letterSpacing": "1px", "fontWeight": "800"}],
+                      "display-time": ["24px", {"lineHeight": "32px", "letterSpacing": "2px", "fontWeight": "700"}],
+                      "tape-script": ["22px", {"lineHeight": "24px", "letterSpacing": "-1px", "fontWeight": "500"}],
+                      "body-standard": ["14px", {"lineHeight": "20px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-standard min-h-screen flex flex-col items-center">
+<!-- Top App Bar -->
+<header class="bg-surface-container-lowest shadow-md docked full-width top-0 border-b-2 border-outline-variant w-full max-w-7xl mx-auto z-50">
+<div class="flex justify-between items-center px-bezel-margin py-2 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="settings_input_component">settings_input_component</span>
+<h1 class="font-label-industrial text-label-industrial uppercase tracking-widest text-primary">MASTER CONTROL</h1>
+</div>
+<div class="font-display-time text-display-time text-primary-fixed-dim drop-shadow-[0_0_8px_rgba(255,181,153,0.6)]">
+                SYSTEM REAR
+            </div>
+<button class="active:scale-95 duration-100 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="power_settings_new">power_settings_new</span>
+</button>
+</div>
+</header>
+<main class="flex-grow w-full max-w-2xl px-4 py-8 pb-32">
+<!-- Main Chassis Panel -->
+<div class="bg-surface-container rounded-lg border-4 border-surface-container-highest metallic-grain p-6 relative shadow-2xl">
+<!-- Decorative Screws -->
+<div class="screw-head absolute top-2 left-2"></div>
+<div class="screw-head absolute top-2 right-2"></div>
+<div class="screw-head absolute bottom-2 left-2"></div>
+<div class="screw-head absolute bottom-2 right-2"></div>
+<!-- Profile Identity Panel -->
+<div class="recessed-panel bg-surface-container-low p-4 rounded mb-8 border border-outline-variant/30">
+<div class="flex items-center gap-6">
+<div class="w-24 h-24 rounded-full border-4 border-surface-container-highest shadow-inner overflow-hidden bg-surface-container-lowest flex items-center justify-center relative">
+<img class="w-full h-full object-cover opacity-80" data-alt="A professional studio portrait of a futuristic audiophile wearing high-end open-back headphones, lit by warm amber and orange tones reflecting off polished metal surfaces in a dark, moody recording studio setting. High-tactile skeuomorphic style with deep shadows and sharp highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUmxbQdpOxVkBqoWYa66GXgRBc0_F9MmR_IBC65tuEYdL7ciIVSEOeJLJhHuqRsJ8IftPsPVao43piWB03YFbUXgjwiDLaImKLDV4bYhzD_Tvj51VnxaSzBZiDEUGW7VmJN-w1OtrIJyf1L36KXUvwlBFrV2rf_knZDytLY_UDgKFK_FaBz6bhqmKByNo0Qa1gl-PXYEKFaIMoRwkY1RrzR6Sw77o2vChayKFN_a9ln8RdzC8i1gGd9wSGjsHTNF7ZoKov8PWjAg"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent pointer-events-none"></div>
+</div>
+<div>
+<h2 class="font-display-time text-display-time text-primary uppercase amber-glow">STATION_042</h2>
+<p class="font-label-industrial text-label-industrial text-on-surface-variant mt-1 opacity-70">SERIAL: 88-XJ-9000</p>
+<div class="flex gap-2 mt-3">
+<span class="px-2 py-0.5 bg-secondary-container/20 text-secondary-fixed-dim text-[10px] font-bold border border-secondary-container/40 uppercase">Verified Unit</span>
+<span class="px-2 py-0.5 bg-primary-container/20 text-primary-fixed-dim text-[10px] font-bold border border-primary-container/40 uppercase">Premium Tier</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RCA Connection Panels (Inputs/Outputs) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Account Connections Panel -->
+<div class="flex flex-col gap-4">
+<h3 class="font-label-industrial text-label-industrial text-on-surface-variant uppercase border-b border-outline-variant/30 pb-1 mb-2">INPUTS (ACCOUNTS)</h3>
+<div class="flex items-center justify-between p-3 recessed-panel bg-surface-container-lowest rounded">
+<div class="flex flex-col">
+<span class="font-label-industrial text-[10px] text-primary/70">CH 1: SPOTIFY</span>
+<span class="text-xs font-bold text-on-surface">CONNECTED</span>
+</div>
+<div class="rca-socket w-8 h-8 rounded-full flex items-center justify-center border-2 border-primary/40">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 recessed-panel bg-surface-container-lowest rounded">
+<div class="flex flex-col">
+<span class="font-label-industrial text-[10px] text-primary/70">CH 2: TIDAL</span>
+<span class="text-xs font-bold text-on-surface-variant opacity-50">DISCONNECTED</span>
+</div>
+<div class="rca-socket w-8 h-8 rounded-full flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 recessed-panel bg-surface-container-lowest rounded">
+<div class="flex flex-col">
+<span class="font-label-industrial text-[10px] text-primary/70">CH 3: LOCAL STORAGE</span>
+<span class="text-xs font-bold text-on-surface">LINKED (4.2 TB)</span>
+</div>
+<div class="rca-socket w-8 h-8 rounded-full flex items-center justify-center border-2 border-primary/40">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+<!-- Settings/Switches Panel -->
+<div class="flex flex-col gap-4">
+<h3 class="font-label-industrial text-label-industrial text-on-surface-variant uppercase border-b border-outline-variant/30 pb-1 mb-2">MODE SELECTORS</h3>
+<div class="flex items-center justify-between p-3">
+<span class="font-label-industrial text-[10px] uppercase text-on-surface-variant">DOLBY NOISE REDUCTION</span>
+<div class="flex items-center gap-3">
+<span class="text-[9px] font-bold">OFF</span>
+<button class="toggle-switch-track w-6 h-10 rounded-full p-1 relative flex flex-col items-center" onclick="this.querySelector('.toggle').classList.toggle('translate-y-4')">
+<div class="toggle w-4 h-4 bg-surface-container-highest border border-outline shadow-md rounded-sm transition-transform duration-200"></div>
+</button>
+<span class="text-[9px] font-bold text-primary">ON</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3">
+<span class="font-label-industrial text-[10px] uppercase text-on-surface-variant">AUTO-REVERSE FEED</span>
+<div class="flex items-center gap-3">
+<span class="text-[9px] font-bold">OFF</span>
+<button class="toggle-switch-track w-6 h-10 rounded-full p-1 relative flex flex-col items-center" onclick="this.querySelector('.toggle').classList.toggle('translate-y-4')">
+<div class="toggle w-4 h-4 translate-y-4 bg-surface-container-highest border border-outline shadow-md rounded-sm transition-transform duration-200"></div>
+</button>
+<span class="text-[9px] font-bold text-primary">ON</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3">
+<span class="font-label-industrial text-[10px] uppercase text-on-surface-variant">HIGH BIAS MODE</span>
+<div class="flex items-center gap-3">
+<span class="text-[9px] font-bold">OFF</span>
+<button class="toggle-switch-track w-6 h-10 rounded-full p-1 relative flex flex-col items-center" onclick="this.querySelector('.toggle').classList.toggle('translate-y-4')">
+<div class="toggle w-4 h-4 translate-y-4 bg-surface-container-highest border border-outline shadow-md rounded-sm transition-transform duration-200"></div>
+</button>
+<span class="text-[9px] font-bold text-primary">ON</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Hardware Controls -->
+<div class="mt-12 flex flex-wrap gap-4 justify-between items-end border-t border-outline-variant/30 pt-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-industrial text-[10px] uppercase text-on-surface-variant">OUTPUT LEVEL (VOLUME)</label>
+<div class="recessed-panel bg-surface-container-lowest w-48 h-8 rounded-sm relative overflow-hidden flex items-center px-1">
+<div class="h-4 bg-gradient-to-r from-secondary-container to-primary-container w-[75%] shadow-[0_0_10px_rgba(255,95,0,0.5)]"></div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="protruding-button bg-surface-container-high border-2 border-surface-container-highest px-6 py-2 rounded text-error uppercase font-bold text-xs flex items-center gap-2 group active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="power_settings_new">power_settings_new</span>
+<span>SHUTDOWN</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Secondary Specs Panel (About) -->
+<div class="mt-8 grid grid-cols-3 gap-2">
+<div class="recessed-panel bg-surface-container-lowest p-3 border border-outline-variant/20 flex flex-col items-center text-center">
+<span class="font-label-industrial text-[9px] text-primary/50">VERSION</span>
+<span class="font-display-time text-xs text-on-surface">v2.4.0-REV</span>
+</div>
+<div class="recessed-panel bg-surface-container-lowest p-3 border border-outline-variant/20 flex flex-col items-center text-center">
+<span class="font-label-industrial text-[9px] text-primary/50">LICENSE</span>
+<span class="font-display-time text-xs text-on-surface">OSS-GPL3</span>
+</div>
+<div class="recessed-panel bg-surface-container-lowest p-3 border border-outline-variant/20 flex flex-col items-center text-center">
+<span class="font-label-industrial text-[9px] text-primary/50">UPTIME</span>
+<span class="font-display-time text-xs text-on-surface" id="uptime">00:42:15</span>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 border-t-4 border-surface-container-highest bg-surface-container-low shadow-[0_-4px_10px_rgba(0,0,0,0.8)]">
+<div class="flex justify-around items-stretch w-full h-20">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 py-button-spacing hover:bg-surface-container hover:text-on-surface transition-all active:translate-y-1 active:shadow-inner duration-75" href="shelf.html">
+<span class="material-symbols-outlined" data-icon="cassette">mobile_share_stack</span>
+<span class="font-label-industrial text-label-industrial">LIBRARY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 py-button-spacing hover:bg-surface-container hover:text-on-surface transition-all active:translate-y-1 active:shadow-inner duration-75" href="discover.html">
+<span class="material-symbols-outlined" data-icon="equalizer">equalizer</span>
+<span class="font-label-industrial text-label-industrial">EQUALIZER</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-surface-container-highest text-primary-fixed-dim shadow-[inset_0_4px_8px_rgba(0,0,0,0.9)] border-t-2 border-primary-container py-button-spacing active:translate-y-1 active:shadow-inner duration-75" href="settings.html">
+<span class="material-symbols-outlined" data-icon="album">album</span>
+<span class="font-label-industrial text-label-industrial">COLLECTION</span>
+</a>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for the uptime counter
+        let seconds = 2535;
+        const uptimeEl = document.getElementById('uptime');
+        
+        setInterval(() => {
+            seconds++;
+            const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
+            const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+            const s = (seconds % 60).toString().padStart(2, '0');
+            uptimeEl.innerText = `${h}:${m}:${s}`;
+        }, 1000);
+
+        // Ripple/Click effect for buttons
+        document.querySelectorAll('.protruding-button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.backgroundColor = 'var(--surface-container-lowest)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.backgroundColor = 'var(--surface-container-high)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.backgroundColor = 'var(--surface-container-high)';
+            });
+        });
+    </script>
+</body></html>
