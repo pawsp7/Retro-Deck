@@ -2,8 +2,17 @@
 
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta name="theme-color" content="#131313"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Master Control"/>
 <title>Master Control - Radio &amp; Discover</title>
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="icons/icon-192.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"/>
+<link rel="stylesheet" href="css/mobile.css"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;family=Hanken+Grotesk:wght@500;800&amp;family=Space+Mono:wght@700&amp;family=Epilogue:wght@500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -143,15 +152,10 @@
       transform: rotate(45deg);
     }
   </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
   </head>
-<body class="bg-background text-on-surface font-body-standard overflow-x-hidden pb-24">
+<body class="bg-background text-on-surface font-body-standard overflow-x-hidden">
 <!-- TOP APP BAR -->
-<header class="bg-surface-container-lowest shadow-md docked full-width top-0 border-b-2 border-outline-variant z-50">
+<header class="app-header bg-surface-container-lowest shadow-md border-b-2 border-outline-variant">
 <div class="flex justify-between items-center px-bezel-margin py-2 w-full max-w-7xl mx-auto">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary" data-icon="settings_input_component">settings_input_component</span>
@@ -165,7 +169,7 @@
 </button>
 </div>
 </header>
-<main class="max-w-4xl mx-auto p-bezel-margin space-y-panel-gap">
+<main class="max-w-4xl mx-auto p-bezel-margin space-y-panel-gap app-main-scroll">
 <!-- MAIN RADIO INTERFACE MODULE -->
 <section class="bg-surface-container-low border-4 border-surface-container-highest rounded-lg p-6 relative skeuo-panel overflow-hidden">
 <!-- Decorative Screws -->
@@ -317,23 +321,9 @@
 </div>
 </div>
 </main>
-<!-- BOTTOM NAVIGATION BAR -->
-<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface-container-low border-t-4 border-surface-container-highest shadow-[0_-4px_10px_rgba(0,0,0,0.8)] h-20">
-<div class="flex justify-around items-stretch w-full h-full">
-<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 py-button-spacing hover:bg-surface-container hover:text-on-surface transition-all active:translate-y-1 active:shadow-inner duration-75" href="shelf.html">
-<span class="material-symbols-outlined" data-icon="cassette">mobile_share_stack</span>
-<span class="font-label-industrial text-label-industrial">LIBRARY</span>
-</a>
-<a class="flex flex-col items-center justify-center bg-surface-container-highest text-primary-fixed-dim shadow-[inset_0_4px_8px_rgba(0,0,0,0.9)] border-t-2 border-primary-container py-button-spacing active:translate-y-1 duration-75" href="discover.html">
-<span class="material-symbols-outlined" data-icon="equalizer">equalizer</span>
-<span class="font-label-industrial text-label-industrial">EQUALIZER</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 py-button-spacing hover:bg-surface-container hover:text-on-surface transition-all active:translate-y-1 active:shadow-inner duration-75" href="settings.html">
-<span class="material-symbols-outlined" data-icon="album">album</span>
-<span class="font-label-industrial text-label-industrial">COLLECTION</span>
-</a>
-</div>
-</nav>
+<div id="app-bottom-nav"></div>
+<script src="js/nav.js"></script>
+<script src="js/app.js"></script>
 <script>
     // Interaction script for the Tuning UI
     let currentRotation = 0;
